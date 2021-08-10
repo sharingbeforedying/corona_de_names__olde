@@ -1,0 +1,67 @@
+<!-- sessionTeams.html -->
+<!-- <link rel="stylesheet" href="../css/teams.css"> -->
+
+<div ng-controller="sessionTeamsPController" ng-init="init()">
+    <h3>Start game</h3>
+    <!-- <div scope-element="startGameDiv" class="startGame" elem-ready="ready_startGameDiv()"> -->
+    <div scope-element="startGameDiv" class="startGame">
+      <button ng-click="submit_startGame()">START GAME</button>
+    </div>
+
+    <h1>SESSION TEAMS</h1>
+
+    <div class="session_teams">
+
+      <div ng-repeat="sessionTeam in session_teamsMap()">
+        <div ng-controller="sessionTeamController" ng-init="init()">
+          <div>ID:{{sessionTeam.id}}</div>
+          <div>COLOR:{{sessionTeam.color}}</div>
+          <div>NAME:{{sessionTeam.name}}</div>
+          <div>VALID:{{sessionTeam.valid}}</div>
+          <div>READY:{{sessionTeam.ready}}</div>
+
+
+          <div ng-repeat="sessionPlayer in sessionTeam.players">
+            <div ng-controller="sessionPlayerController" ng-init="init()">
+              <div>ID:{{sessionPlayer.id}}</div>
+              <div>NAME:{{sessionPlayer.name}}</div>
+              <div>role:{{sessionPlayer.role}}</div>
+              <div class="form-group">
+                <label for="formControlSelectRole">select role</label>
+                <select class="form-control" id="formControlSelectRole" name="singleSelect" ng-model="sessionPlayer.role" ng-options="role as role for role in sessionTeam.roles" ng-change="submit_setRole()">
+                </select>
+              </div>
+
+              <div class="form-group">
+                <input scope-element="readyInput" type="checkbox" id="chk_ready" ng-model="sessionPlayer.ready" ng-change="readyInputChanged()">
+                <label for="chk_ready">Ready</label><br>
+              </div>
+
+              <button ng-click="submit_leaveTeam()">LEAVE TEAM</button>
+            </div>
+
+          </div>
+
+          <div class="joinTeam">
+            <button ng-click="submit_joinTeam()">JOIN TEAM</button>
+          </div>
+
+
+        </div>
+      </div>
+
+    </div>
+
+    <h1>AVAILABLE PERSON PLAYERS</h1>
+
+    <div class="localAvailablePersonPlayers">
+      <h2>LOCAL PERSON PLAYERS:</h2>
+      <div ng-repeat="personPlayer in personPlayersMap_local_available()">
+        <div ng-controller="localAvailablePersonPlayerController" class="localAvailablePersonPlayer" ng-click="selectPersonPlayer(personPlayer)" ng-style="style()">
+          <div>id:   {{personPlayer.id}}</div>
+          <div>name: {{personPlayer.name}}</div>
+        </div>
+      <div>
+    </div>
+
+</div>

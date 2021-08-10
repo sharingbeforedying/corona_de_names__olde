@@ -1,0 +1,37 @@
+<!-- personPlayers.html -->
+<link rel="stylesheet" href="../css/personPlayers.css">
+
+<div ng-controller="personPlayersPController" ng-init="init()">
+    <h1>PERSON PLAYERS</h1>
+
+    <button ng-click="add_player()">ADD PLAYER</button>
+
+
+    <div>LOCAL ID : {{localId()}}</div>
+
+    <div class="localPersonPlayers">LOCAL PERSON PLAYERS:
+
+
+      <div ng-repeat="personPlayer in localPersonPlayers()">
+        <div ng-controller="personPlayerController" ng-init="init()">
+          <div>ID:{{personPlayer.id}}</div>
+          <div>NAME:{{personPlayer.name}}</div>
+          <button ng-click="activate_setName()">SET NAME</button>
+          <div scope-element="wordInputFormGroup" class="form-group" hidden="true">
+            <input scope-element="wordInput" class="mx-auto" type="text" ng-model="input_word">
+            <button ng-click="submit_setName()">OK</button>
+          </div>
+
+          <button ng-click="submit_removePlayer()">REMOVE PLAYER</button>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="otherPlayers">OTHER PERSON PLAYERS:
+      <div ng-repeat="otherPersonPlayerGroup in personPlayerGroupsMap_other()">
+        <div>{{otherPersonPlayerGroup}}</div>
+      <div>
+    </div>
+
+</div>

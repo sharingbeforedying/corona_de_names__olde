@@ -1,0 +1,42 @@
+<!-- game.html -->
+<!-- <link rel="stylesheet" href="../css/game.css"> -->
+
+<div ng-controller="gamePController" ng-init="init()">
+    <h1>GAME</h1>
+
+    <div ng-switch="gameRoomClientServiceData.session_activePlayer != null">
+      <div ng-switch-when="true">
+
+        <div ng-switch="gameRoomClientServiceData.session_activeGamePlayer.role">
+          <div ng-switch-when="teller">
+
+            <div ng-controller="gameTellerController" class="tellerGameArea">
+              <p>TELLER : {{ gameRoomClientServiceData.session_activePlayer.name }}, please type something.</p>
+              <div scope-element="wordInputFormGroup" class="form-group">
+                <input scope-element="wordInput" class="mx-auto" type="text" ng-model="input_word">
+                <button ng-click="submit_word()">OK</button>
+              </div>
+            </div>
+
+          </div>
+          <div ng-switch-when="guesser">
+
+            <div ng-controller="gameTellerController" class="guesserGameArea">
+              <p>GUESSER : {{ gameRoomClientServiceData.session_activePlayer.name }}, please type something.</p>
+              <div scope-element="wordInputFormGroup" class="form-group">
+                <input scope-element="wordInput" class="mx-auto" type="text" ng-model="input_word">
+                <button ng-click="submit_word()">OK</button>
+              </div>
+            </div>
+
+          </div>
+
+      </div>
+      <div ng-switch-when="false">
+        <h1>other player is playing</h1>
+      </div>
+    <div>
+
+
+
+</div>

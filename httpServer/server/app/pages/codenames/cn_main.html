@@ -1,0 +1,204 @@
+<!-- cn_main.html -->
+<div class="custom_cursor h-100" ng-controller="cnmMainController" ng-init="init()" ng-style="styleForMain()">
+
+  <h1 ng-style="styleForTopBanner()">{{bannerMessage}}</h1>
+  <!--, clicks left: {{gameModel.currentTurn.actionSequence.get_remaining_actions_nb()}}-->
+  <h1 class="text-center" ng-controller="cnmGameOverController" ng-init="init()">{{message}}</h1>
+
+  <input type="number" name="cellSizeInput" ng-model="displaySettings.cell_size">
+  <input type="number" name="fontSizeInput" ng-model="displaySettings.font_size">
+
+  <div class="row w-100 h-100">
+
+    <div class="col-1">
+      <div class="team" ng-controller="cnmTeamController" ng-init="init(gameModel.teams[0])" ng-style="styleForTeam()">
+        <div class="container">
+          <!--team score-->
+          <div class="row">
+            <div class="container">
+              <!-- <div class="team_score row">
+                SCORE : {{gameModel.getScoreForTeam(team)}}
+              </div> -->
+              <div class="team_score row">
+                OBJECTIVE : {{getObjectiveForTeam()}}
+              </div>
+              <div class="team_score row">
+                REMAINING : {{getRemainingForTeam()}}
+              </div>
+            </div>
+          </div>
+
+          <div class="row mx-auto" ng-controller="cnmTeamTurnController" ng-style="styleForTeamTurn()">
+            <div class="container">
+
+              <!--contract creator-->
+              <div class="row" ng-controller="cnmCreateContractController" ng-style="styleForContractCreator()">
+                <div class="container">
+                  <div class="row">
+                    <div class="container" ng-controller="npMainController">
+                      <div class="row">
+                        <button class="number_picker_button d-flex" ng-click="inc()" style="background-color: Transparent;">
+                          <img class="d-flex flex-fill" src="images\number_picker\ARROW03.png"></img>
+                        </button>
+                      </div>
+                      <div class="row">
+                        <!-- <h1 class="mx-auto">{{numberModel.number}}</h1> -->
+                        <img class="d-flex flex-fill" src="images\number_picker\numbers\{{numberModel.number}}.png"></img>
+                      </div>
+                      <div class="row">
+                        <button class="number_picker_button d-flex" ng-click="dec()" style="background-color: Transparent;border: none;">
+                          <img class="d-flex flex-fill" src="images\number_picker\ARROW04.png"></img>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    .
+                  </div>
+                  <div class="row">
+                    .
+                  </div>
+                  <div class="row">
+                    <button class="submit_contract_button d-flex" ng-click="submitContract()" style="background-color: Transparent;border: none;">
+                      <img class="d-flex flex-fill" src="images\buttons\ok.png"></img>
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                .
+              </div>
+              <div class="row">
+                .
+              </div>
+
+              <!--contract mgmt-->
+              <div class="row" ng-controller="contractController">
+
+                <!-- <div class="row"> -->
+                  <!-- {{name}} -->
+                <!-- </div> -->
+
+                <!--interrupt action sequence-->
+                <!-- <div class="row"> -->
+                <button class="end_turn_button d-flex" ng-click="endTurn()" style="background-color: Transparent;border: none;" ng-style="styleForEndTurn()">
+                  <img class="d-flex flex-fill" src="images\buttons\stop.png"></img>
+                </button>
+                <!-- </div> -->
+              </div>
+
+              </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="col-10 h-100">
+
+      <div ng-controller="cnmGridController" ng-init="init()" ng-style="styleForGrid()" style="display: grid; grid-template-columns: repeat(5,1fr); grid-gap: 4px 4px; justify-content: stretch;">
+        <div ng-repeat="cellModel in child_models track by $index" class="d-flex">
+              <div class="flex-fill rounded" ng-controller="cnmCellController" ng-init="init(cellModel)" ng-style="styleForCell()" ng-click="cellClicked()">
+
+                <div class="card mx-auto" style="background-color: Transparent;border-style:none;" ng-style="styleForCard()">
+                  <img class="card-img h-100 w-100" src="{{imageSrc}}" style="border-style:none; object-fit: cover;"></img>
+                  <div class="card-img-overlay d-flex align-items-center" style="padding:0px;">
+                    <h2 class="card-title mx-auto" ng-style="styleForWord()">{{word}}</h2>
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+          </div>
+    </div>
+
+
+
+    <div class="col-1">
+      <div class="team" ng-controller="cnmTeamController" ng-init="init(gameModel.teams[1])" ng-style="styleForTeam()">
+        <div class="container">
+          <!--team score-->
+          <div class="row">
+            <div class="container">
+              <!-- <div class="team_score row">
+                SCORE : {{gameModel.getScoreForTeam(team)}}
+              </div> -->
+              <div class="team_score row">
+                OBJECTIVE : {{getObjectiveForTeam()}}
+              </div>
+              <div class="team_score row">
+                REMAINING : {{getRemainingForTeam()}}
+              </div>
+            </div>
+          </div>
+
+          <div class="row mx-auto" ng-controller="cnmTeamTurnController" ng-style="styleForTeamTurn()">
+            <div class="container">
+
+              <!--contract creator-->
+              <div class="row" ng-controller="cnmCreateContractController" ng-style="styleForContractCreator()">
+                <div class="container">
+                  <div class="row">
+                    <div class="container" ng-controller="npMainController">
+                      <div class="row">
+                        <button class="number_picker_button d-flex" ng-click="inc()" style="background-color: Transparent;">
+                          <img class="d-flex flex-fill" src="images\number_picker\ARROW03.png"></img>
+                        </button>
+                      </div>
+                      <div class="row">
+                        <!-- <h1 class="mx-auto">{{numberModel.number}}</h1> -->
+                        <img class="d-flex flex-fill" src="images\number_picker\numbers\{{numberModel.number}}.png"></img>
+                      </div>
+                      <div class="row">
+                        <button class="number_picker_button d-flex" ng-click="dec()" style="background-color: Transparent;border: none;">
+                          <img class="d-flex flex-fill" src="images\number_picker\ARROW04.png"></img>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    .
+                  </div>
+                  <div class="row">
+                    .
+                  </div>
+                  <div class="row">
+                    <button class="submit_contract_button d-flex" ng-click="submitContract()" style="background-color: Transparent;border: none;">
+                      <img class="d-flex flex-fill" src="images\buttons\ok.png"></img>
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                .
+              </div>
+              <div class="row">
+                .
+              </div>
+
+              <!--contract mgmt-->
+              <div class="row" ng-controller="contractController">
+
+                <!-- <div class="row"> -->
+                  <!-- {{name}} -->
+                <!-- </div> -->
+
+                <!--interrupt action sequence-->
+                <!-- <div class="row"> -->
+                <button class="end_turn_button d-flex" ng-click="endTurn()" style="background-color: Transparent;border: none;" ng-style="styleForEndTurn()">
+                  <img class="d-flex flex-fill" src="images\buttons\stop.png"></img>
+                </button>
+                <!-- </div> -->
+              </div>
+
+              </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>

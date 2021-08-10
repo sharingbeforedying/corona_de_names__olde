@@ -1,0 +1,46 @@
+<div class="team" ng-controller="cnmTeamController" ng-init="init(gameModel.teams[1])" ng-style="styleForTeam()">
+  <div class="container">
+    <!--team score-->
+    <div class="row">
+      <div class="container">
+        <!-- <div class="team_score row">
+          SCORE : {{gameModel.getScoreForTeam(team)}}
+        </div> -->
+        <div class="team_score row">
+          OBJECTIVE : {{getObjectiveForTeam()}}
+        </div>
+        <div class="team_score row">
+          REMAINING : {{getRemainingForTeam()}}
+        </div>
+      </div>
+    </div>
+
+    <div class="row mx-auto" ng-controller="cnmTeamTurnController" ng-style="styleForTeamTurn()">
+      <div class="container">
+
+
+
+        <div class="row">
+          .
+        </div>
+        <div class="row">
+          .
+        </div>
+
+        <!--contract mgmt-->
+        <div class="row" ng-controller="contractController">
+
+          <!-- <div class="row"> -->
+            <!-- {{name}} -->
+          <!-- </div> -->
+
+          <!--interrupt action sequence-->
+          <!-- <div class="row"> -->
+          <button class="end_turn_button d-flex" ng-click="endTurn()" style="background-color: Transparent;border: none;" ng-style="styleForEndTurn()">
+            <img class="d-flex flex-fill" src="images\buttons\stop.png"></img>
+          </button>
+          <!-- </div> -->
+        </div>
+
+        </div>
+    </div>

@@ -1,0 +1,160 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<!-- define angular app -->
+<html ng-app="awApp">
+
+<head>
+  <!-- SCROLLS -->
+  <!-- load bootstrap -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+  <!-- SPELLS -->
+  <!-- load angular via CDN -->
+  <!-- <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script> -->
+  <!-- <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.js"></script> -->
+
+  <!-- webpacked-libs -->
+  <!-- <script type="text/javascript" src="dist/angular-ui.bundle.js"></script> -->
+  <script type="text/javascript" src="dist/angular.bundle.js"></script>
+
+
+
+  <!--drag and drop-->
+  <script type="text/javascript" src="lib/fileDropzone.js"></script>
+
+  <!--colyseus-->
+  <script type="module" src="lib/colyseus.js"></script>
+
+  <!-- utils -->
+  <script type="text/javascript" src="js/utils/utils.js"></script>
+
+
+
+
+  <!--common-->
+  <script type="text/javascript" src="js/common/enums.js"></script>
+  <script type="text/javascript" src="js/common/enums_content.js"></script>
+
+
+  <!--angular app-->
+  <script type="text/javascript" src="app.js"></script>
+  <!-- <script type="text/javascript" src="bin/app.bundle.js"></script> -->
+
+    <!-- services -->
+  <script type="text/javascript" src="js/services/gameService.js"></script>
+
+  <script type="text/javascript" src="js/services/rooms/gameRoomClientService.js"></script>
+  <script type="text/javascript" src="js/services/rooms/contentRoomClientService.js"></script>
+
+  <script type="text/javascript" src="js/services/displaySettingsService.js"></script>
+
+
+    <!-- controllers -->
+      <!--ui-->
+  <script type="text/javascript" src="js/controllers/ui/number_picker/number_picker_model.js"></script>
+  <script type="text/javascript" src="js/controllers/ui/number_picker/number_picker.js"></script>
+
+  <script type="text/javascript" src="js/controllers/ui/displaySettingsCntrl.js"></script>
+
+  <script type="text/javascript" src="js/controllers/modal/testModalCtrl.js"></script>
+
+
+      <!--app-->
+  <script type="text/javascript" src="js/controllers/main.js"></script>
+
+  <script type="text/javascript" src="js/controllers/auto.js"></script>
+
+  <script type="text/javascript" src="js/controllers/personPlayers.js"></script>
+  <script type="text/javascript" src="js/controllers/personPlayerCntrl.js"></script>
+
+
+
+
+  <script type="text/javascript" src="js/controllers/sessionTeams.js"></script>
+  <script type="text/javascript" src="js/controllers/sessionTeamCntrl.js"></script>
+  <script type="text/javascript" src="js/controllers/sessionPlayerCntrl.js"></script>
+  <script type="text/javascript" src="js/controllers/localAvailPersonPlayerCntrl.js"></script>
+
+  <script type="text/javascript" src="js/controllers/sessionConfig.js"></script>
+
+
+  <script type="text/javascript" src="js/controllers/cellContentCntrl.js"></script>
+  <script type="text/javascript" src="js/controllers/cellContentInputCntrl.js"></script>
+
+
+  <script type="text/javascript" src="js/controllers/instanceConfig.js"></script>
+
+  <script type="text/javascript" src="js/controllers/codenames/cn_position.js"></script>
+
+  <script type="text/javascript" src="js/controllers/codenames/cn_customize_model.js"></script>
+  <script type="text/javascript" src="js/controllers/codenames/cn_customize.js"></script>
+
+  <!-- <script type="text/javascript" src="js/codenames/cn_main_model.js"></script> -->
+  <!-- <script type="text/javascript" src="js/codenames/cn_main.js"></script> -->
+
+  <script type="text/javascript" src="js/controllers/codenames/cn_mini.js"></script>
+
+  <!-- <script type="text/javascript" src="js/game.js"></script> -->
+  <script type="text/javascript" src="js/controllers/gameTeller.js"></script>
+  <script type="text/javascript" src="js/controllers/gameGuesser.js"></script>
+
+  <script type="text/javascript" src="js/controllers/cn_duo/game_duo.js"></script>
+
+
+</head>
+
+<!-- define angular controller -->
+
+<body ng-controller="mainController" ng-init="init()" style="background-color: wheat;">
+
+  <!-- HEADER AND NAVBAR -->
+  <div id="left_panel">
+    <!--<nav class="navbar navbar-default">-->
+    <div class="container">
+      <!-- <div class="navbar-header">
+                    <a class="navbar-brand" href="/">Angular Routing Example</a>
+                </div> -->
+
+      <ul class="row">
+
+        <li class="col"><a href="#"><i class="fa fa-home"></i> Home</a></li>
+        <li class="col"><a href="#auto"><i class="fa fa-shield"></i> auto</a></li>
+        <li class="col"><a href="#personPlayers"><i class="fa fa-shield"></i> personPlayers</a></li>
+
+        <li class="col"><a href="#sessionTeams"><i class="fa fa-shield"></i> sessionTeams</a></li>
+        <li class="col"><a href="#sessionConfig"><i class="fa fa-shield"></i> sessionConfig</a></li>
+
+        <li class="col"><a href="#instanceConfig"><i class="fa fa-shield"></i> instanceConfig</a></li>
+
+        <li class="col"><a href="#cn_position"><i class="fa fa-shield"></i> cn_position</a></li>
+        <li class="col"><a href="#cn_customize"><i class="fa fa-shield"></i> cn_customize</a></li>
+        <!-- <li class="col"><a href="#cn_main"><i class="fa fa-shield"></i> cn_main</a></li> -->
+        <li class="col"><a href="#cn_mini"><i class="fa fa-shield"></i> cn_mini</a></li>
+
+        <!-- <li class="col"><a href="#game"><i class="fa fa-shield"></i> game</a></li> -->
+        <li class="col"><a href="#game_teller"><i class="fa fa-shield"></i> game_teller</a></li>
+        <li class="col"><a href="#game_guesser"><i class="fa fa-shield"></i> game_guesser</a></li>
+
+        <li class="col"><a href="#game_duo"><i class="fa fa-shield"></i> game_duo</a></li>
+
+      </ul>
+    </div>
+  </div>
+
+  <div>{{message}}</div>
+
+  <!-- MAIN CONTENT AND INJECTED VIEWS -->
+  <div id="main">
+    <!--{{ message }}-->
+    <!-- angular templating -->
+    <!-- this is where content will be injected -->
+    <div id="view" ng-view></div>
+
+  </div>
+
+</body>
+
+</html>

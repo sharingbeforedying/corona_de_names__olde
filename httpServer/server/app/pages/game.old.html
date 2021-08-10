@@ -1,0 +1,28 @@
+<!-- game.html -->
+<!-- <link rel="stylesheet" href="../css/game.css"> -->
+
+<div ng-controller="gameController" ng-init="init()">
+    <h1>GAME</h1>
+
+    <div class="gamePlayers">GAME_PLAYERS:
+      <div ng-repeat="gamePlayer in gameRoomClientServiceData.gameConfig.readyPlayerList">
+        <div>{{gamePlayer}}</div>
+      </div>
+    </div>
+
+    <h4>Game state:</h4>
+    <div>{{ gameRoomClientServiceData.gameState.c_string }}
+
+    <div scope-element="playerDiv" class="playerGameArea">
+      <p>{{ gameRoomClientServiceData.session_activePlayer.name }}, please type something.</p>
+      <div scope-element="wordInputFormGroup" class="form-group">
+        <input scope-element="wordInput" class="mx-auto" type="text" ng-model="input_word">
+        <button ng-click="submit_word()">OK</button>
+      </div>
+    </div>
+
+    <div scope-element="otherPlayerDiv" class="otherPlayerGameArea">
+      {{gameRoomClientServiceData.game_activePlayer.name}} is playing.
+    </div>
+
+</div>
